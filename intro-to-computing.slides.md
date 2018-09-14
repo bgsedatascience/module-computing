@@ -191,27 +191,43 @@ Demo:
 
 (Compile CPython from source)
 
-<https://github.com/python/cpython>
+<https://github.com/bgsedatascience/module-computing/tree/master/compiling>
 
 ---
 
-## Downloading binaries
+## $PATH
 
-Demo:
+Your contains an environment variable called PATH:
 
-(Download pre-compiled binary of Julia)
+```{sh}
+echo $PATH
+```
 
-<https://julialang.org/downloads/platform.html>
+PATH contains a list of paths, separated by colons: 
 
-(Symbolic linking and $PATH)
+```{sh}
+usr/local/bin:/usr/bin:/bin
+```
+
+When you enter a command into your shell, (for example "python") it will look for any executables that are in any of the folders listed in PATH. 
 
 ---
 
-## Using package managers
+## Installing
 
-Demo: 
+Installing a program, therefore, is often nothing more than putting an executable in a folder that is listen in your PATH. 
 
-(Use apt to install r-base)
+Instead of moving it to one of those folders, you could also create a symbolic link:
+
+```{sh}
+sudo ln -s /your/program/executable /usr/local/bin
+```
+
+Or, conversely, you could modify your PATH to add the folder that holds the executable:
+
+```{sh}
+export PATH="your/program/:$PATH"
+```
 
 ---
 
@@ -249,10 +265,34 @@ If you've heard of virtual machines, it's like that, but without the CPU overhea
 
 Demo: 
 
-(Install Docker)
+(Install Docker via apt)
 
-(Pulling images)
+<https://docs.docker.com/install/linux/docker-ce/ubuntu/>
 
-(--name, -d, --rm, -v, -p)
+---
 
- 
+## Jupyter Docker Stacks
+
+The folk behind Jupyter have created a set of Docker images that are extremely useful for data science: 
+
+<https://github.com/jupyter/docker-stacks>
+
+We can run the "datascience" image with the following command: 
+
+```{sh}
+docker run -d --name notebook -v $PWD:/home/jovyan/work \
+-p 8888:8888 jupyter/datascience-notebook
+```
+---
+
+## Docker options
+
+**-d** Run the container "in the background," so you can do other things in your terminal, or close it, without the container exiting. 
+
+**---name** This is just a name which you can refer to it by later. 
+
+**-v** Containers have their own file system. This command allows you to "mount" a folder from your host computer into a folder in your container, such that you can read and write to files on your computer from the container. It is a mapping "host/folder:docker/folder"
+
+**-p** Just as computers have numbered ports, so do containers. This option creates a mapping from the host computers port to the containers port. For example, "707:8888" would map the port 707 on the host computer to the port 8888 in the container.
+
+---
