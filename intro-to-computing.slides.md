@@ -280,7 +280,7 @@ The folk behind Jupyter have created a set of Docker images that are extremely u
 We can run the "datascience" image with the following command: 
 
 ```{sh}
-docker run -d --name notebook -v $PWD:/home/jovyan/work \
+sudo docker run -d --name notebook -v $PWD:/home/jovyan/work \
 -p 8888:8888 jupyter/datascience-notebook
 ```
 ---
@@ -294,5 +294,31 @@ docker run -d --name notebook -v $PWD:/home/jovyan/work \
 **-v** Containers have their own file system. This command allows you to "mount" a folder from your host computer into a folder in your container, such that you can read and write to files on your computer from the container. It is a mapping "host/folder:docker/folder"
 
 **-p** Just as computers have numbered ports, so do containers. This option creates a mapping from the host computers port to the containers port. For example, "707:8888" would map the port 707 on the host computer to the port 8888 in the container.
+
+---
+
+## Getting logs
+
+Because we ran the container "in the background" via the -d command, we have to look a bit to find the token that jupyter creates for us: 
+
+```{sh}
+sudo docker logs notebook
+```
+
+This will display all the logs that the container named "notebook" has created. 
+
+Look at the website for the Jupyter Docker Stacks to see more about all the options they provide! Including setting your own password, and using Jupyter Lab.
+
+---
+
+## Giving Docker to our user
+
+To avoid having to use "sudo" every time we use docker, we can add the current user (ubuntu) to the docker group: 
+
+```{sh}
+sudo usermod -aG docker $USER
+```
+
+USER is an environment variable that contains your username, and "docker" is the group we are adding the user to, a group which was created by the docker install process.
 
 ---
