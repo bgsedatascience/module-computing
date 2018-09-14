@@ -58,7 +58,12 @@ A keypair consists of a private key and a public key.
 
 You can create this keypair, or AWS can create this keypair. 
 
-ssh-keygen & ssh-agent
+ssh-keygen & ssh-agent 
+
+```
+eval "$(ssh-agent -s)"
+ssh-add [path-to-pem-file]
+```
 
 ---
 
@@ -169,11 +174,24 @@ Compilers are translators, human > machine!
 
 ---
 
+## Shell as a program
+
+Shells, such as bash, are executables that runs on your computer!
+
+```{sh}
+stdin >  bash  > stdout
+       ---^v---
+       computer
+```
+---
+
 ## Compiling from source
 
 Demo: 
 
-(Compile Julia from source)
+(Compile CPython from source)
+
+<https://github.com/python/cpython>
 
 ---
 
@@ -182,6 +200,8 @@ Demo:
 Demo:
 
 (Download pre-compiled binary of Julia)
+
+<https://julialang.org/downloads/platform.html>
 
 (Symbolic linking and $PATH)
 
