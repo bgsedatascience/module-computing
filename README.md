@@ -22,7 +22,7 @@ TCP is a protocol, a "transport layer" representation that abstracts the two-way
 
 HTTP, the protocol of the web, is built on top of TCP.
 
-SSH, "secure shell", is also built on top of TCP .
+SSH, "secure shell", is also built on top of TCP.
 
 SSH can be used to login to another computer and control it via a "shell", particularly via the a CLI shell.
 
@@ -161,8 +161,6 @@ For each of the following: "owner", "group", and "others".
 You can change the ownership of a file with `chown` and the permissions with `chmod`.
 
 Let's play around with permissions and see how it effects us.
-
-
 
 
 ## Programs

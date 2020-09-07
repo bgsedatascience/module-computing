@@ -66,7 +66,7 @@ The file has two extensions: tar and gz. This is a common way to deliver compres
 Take a look at `tar --help` to see the options that tar has. I always forget which ones I need. In this case, we need to use "x" to extract all the folders and create directories that we need. Then we need "f" to tell it the filename!
 
 ``` shell
-tar -xf julia-1.2.0-linux-x86_64.tar.gz
+tar -xf julia-1.5.1-linux-x86_64.tar.gz
 ```
 
 Use `ls` again to see what you've done, then use it again to look inside the folder you just created.
@@ -76,7 +76,7 @@ Binaries are traditionally stored in folders called "bin". If we look in the "bi
 Let's try and execute it:
 
 ``` shell
-julia-1.2.0/bin/julia
+julia-1.5.1/bin/julia
 ```
 
 It should run! Now you can use Julia, a beautifully but woefully underused language.
@@ -106,16 +106,14 @@ https://cran.rediris.es/
 Click "download R for Linux" and follow the link to the Ubuntu folder. That gives you installation instructions. The following indicates a repository:
 
 ``` shell
-deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/
+deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/
 ```
 
 Notice that each repository they offer is for a different major version of Ubuntu. If you're running 18 (Bionic Beaver), you should use the above repository. They recommend modifying your sources.list file directly, which is a file that lives in /etc/apt/. We will use the command `add-apt-repository` to do this for us, however:
 
 ``` shell
-sudo add-apt-repository deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/
+sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/"
 ```
-
-After we add a repository, we need to run `sudo apt update` in order to refresh our list of available packages. Try that now.
 
 You should see an error related to the lack of a public key for the r-project repository. That's because we didn't add their key!
 
